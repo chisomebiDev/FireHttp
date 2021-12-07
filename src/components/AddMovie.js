@@ -11,14 +11,26 @@ function AddMovie(props) {
 
   function submitHandler(event) {
     event.preventDefault();
+
+    const titleValue = titleRef.current.value;
+    const openingTextValue = openingTextRef.current.value;
+    const releaseDateValue = releaseDateRef.current.value;
+
+    if (
+      titleValue.length === 0 &&
+      openingTextValue.length === 0 &&
+      releaseDateValue.length === 0
+    )
+      return;
     // could add validation here...
     const movie = {
-      title: titleRef.current.value,
-      openingText: openingTextRef.current.value,
-      releaseDate: releaseDateRef.current.value,
+      title: titleValue,
+      openingText: openingTextValue,
+      releaseDate: releaseDateValue,
     };
 
     addMovieHandler(movie);
+
     titleRef.current.value = "";
     openingTextRef.current.value = "";
     releaseDateRef.current.value = "";
